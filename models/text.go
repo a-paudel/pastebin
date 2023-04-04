@@ -2,6 +2,7 @@ package models
 
 import (
 	"math/rand"
+	"time"
 
 	"gorm.io/gorm"
 )
@@ -38,4 +39,8 @@ func (t *Text) Create(content string) {
 	t.Content = content
 	t.Code = generateCode()
 	Db.Create(t)
+}
+
+func (t *Text) DeleteExpired() {
+	Db.Where("created_at < ?", time.Now().Add(-time.Hour*24)).Delete(&Text{})
 }

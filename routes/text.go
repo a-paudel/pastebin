@@ -30,6 +30,7 @@ func createTextPost(c echo.Context) error {
 	}
 
 	var text models.Text
+	text.DeleteExpired()
 	text.Create(input.Content)
 
 	var url = c.Echo().URL(viewText, text.Code)
@@ -39,6 +40,7 @@ func createTextPost(c echo.Context) error {
 func viewText(c echo.Context) error {
 	var code = c.Param("code")
 	var text models.Text
+	text.DeleteExpired()
 	err := models.Db.Where("code = ?", code).First(&text).Error
 	if err != nil {
 		return c.String(404, "text not found")
@@ -60,6 +62,7 @@ func viewText(c echo.Context) error {
 func viewTextRaw(c echo.Context) error {
 	var code = c.Param("code")
 	var text models.Text
+	text.DeleteExpired()
 	err := models.Db.Where("code = ?", code).First(&text).Error
 	if err != nil {
 		return c.String(404, "text not found")
