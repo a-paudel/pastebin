@@ -1,0 +1,39 @@
+{{block "content" .}}
+<div class="container">
+    <p>
+        <a href="{{.rawLink}}">View Raw</a>
+        or
+        <a href="{{.createLink}}">Create another paste</a>
+    </p>
+    <pre><code>{{.text.Content}}</code></pre>
+    <p>This paste expires {{ .expiryDate}}</p>
+</div>
+
+
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark-reasonable.min.css"
+    integrity="sha512-RwXJS3k4Z0IK6TGoL3pgQlA9g2THFhKL7z9TYWdAI8u6xK0AUuMWieJuWgTRayywC9A94ifUj1RzjDa1NIlUIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+    integrity="sha512-bgHRAiTjGrzHzLyKOnpFvaEpGzJet3z4tZnXGjpsCcqOnAH6VGUx9frc5bcIhKTVLEiCO6vEhNAgx5jtLUYrfA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    hljs.highlightAll();
+</script>
+
+<style>
+    .container {
+        padding-top: 1rem;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    pre>code {
+        user-select: all;
+    }
+</style>
+{{end}}
