@@ -11,6 +11,7 @@ import (
 func startServer() {
 	app := echo.New()
 	app.Pre(middleware.RemoveTrailingSlash())
+	app.Pre(middleware.HTTPSNonWWWRedirect())
 
 	app.Use(middleware.Logger())
 	app.Use(middleware.Recover())

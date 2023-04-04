@@ -11,6 +11,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pastebin.entrypoints=web"
+      # - "traefik.http.routers.pastebin.entrypoints=websecure"
+      # - "traefik.http.routers.pastebin.tls.certresolver=letsencrypt"
       - "traefik.http.routers.pastebin.rule=Host(`pastebin.localhost`)"
       
     expose:
