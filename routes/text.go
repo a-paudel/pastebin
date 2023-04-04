@@ -1,8 +1,9 @@
 package routes
 
 import (
-	"pastebin/models"
 	"time"
+
+	"github.com/a-paudel/pastebin/models"
 
 	"github.com/dustin/go-humanize"
 	"github.com/labstack/echo/v4"

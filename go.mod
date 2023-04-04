@@ -1,4 +1,4 @@
-module pastebin
+module github.com/a-paudel/pastebin
 
 go 1.20
 

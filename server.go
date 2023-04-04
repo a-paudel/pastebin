@@ -1,8 +1,8 @@
 package main
 
 import (
-	"pastebin/routes"
-	"pastebin/templates"
+	"github.com/a-paudel/pastebin/routes"
+	"github.com/a-paudel/pastebin/templates"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
