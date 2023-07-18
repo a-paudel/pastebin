@@ -1,3 +1,6 @@
 data/
 tmp/
 pastebin
+.env
+node_modules/
+.svelte-kit
