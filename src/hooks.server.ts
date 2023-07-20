@@ -1,8 +1,10 @@
 import type { Handle } from "@sveltejs/kit";
-import { deleteExpiredPastes } from "../tasks/delete_expired";
+import { deleteExpiredPastes } from "./tasks/delete_expired";
 
 export const handle: Handle = async ({ event, resolve }) => {
-  await deleteExpiredPastes();
+  let tasks = [deleteExpiredPastes()];
+  // await all tasks
+  await Promise.all(tasks);
   let resp = await resolve(event);
   return resp;
 };

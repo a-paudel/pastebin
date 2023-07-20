@@ -1,18 +1,14 @@
 import { redirect } from "@sveltejs/kit";
-import { db } from "../db/database";
+import { db, type Paste, type PasteCreate } from "../db/database";
 import type { Actions } from "./$types";
-import { nanoid } from "nanoid";
 
-async function createEntry(content: string) {
-  let res = await db
-    .insertInto("pastes")
-    .values({ content, code: nanoid(3) })
-    .returning("code")
-    .executeTakeFirst();
-  if (!res) {
-    return createEntry(content);
+async function createEntry(data: PasteCreate) {
+  let res = await db.create<Paste, PasteCreate>("paste", data);
+  if (res.length === 0) {
+    return createEntry(data);
   }
-  return res.code;
+  let paste = res[0];
+  return paste.code;
 }
 
 export const actions: Actions = {
@@ -21,7 +17,7 @@ export const actions: Actions = {
     let content = formData.get("content") as string;
 
     // create an entry in the database
-    let code = await createEntry(content);
+    let code = await createEntry({ content });
     throw redirect(302, `/${code}`);
   },
 };

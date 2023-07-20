@@ -1,19 +1,32 @@
-import type { DB } from "./types"; // this is the Database interface we defined earlier
-import pg from "pg";
-import { Kysely, PostgresDialect } from "kysely";
-import dotenv from "dotenv";
-dotenv.config();
+import {
+  SURREAL_DB,
+  SURREAL_NS,
+  SURREAL_PASS,
+  SURREAL_SCOPE,
+  SURREAL_URL,
+  SURREAL_USER,
+} from "$env/static/private";
+import { Surreal } from "surrealdb.js";
 
-const dialect = new PostgresDialect({
-  pool: new pg.Pool({
-    connectionString: process.env.DATABASE_URL,
-  }),
-});
+export type Paste = {
+  id: string;
+  created_at: string;
+  updated_at: string;
 
-// Database interface is passed to Kysely's constructor, and from now on, Kysely
-// knows your database structure.
-// Dialect is passed to Kysely's constructor, and from now on, Kysely knows how
-// to communicate with your database.
-export const db = new Kysely<DB>({
-  dialect,
+  code: string;
+  content: string;
+};
+
+export type PasteCreate = {
+  content: string;
+};
+
+export const db = new Surreal(SURREAL_URL, {
+  auth: {
+    user: SURREAL_USER,
+    pass: SURREAL_PASS,
+    NS: SURREAL_NS,
+    DB: SURREAL_DB,
+    SC: SURREAL_SCOPE,
+  },
 });
