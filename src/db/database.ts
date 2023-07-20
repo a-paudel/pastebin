@@ -29,4 +29,6 @@ export const db = new Surreal(SURREAL_URL, {
     DB: SURREAL_DB,
     SC: SURREAL_SCOPE,
   },
+  ns: SURREAL_NS,
+  db: SURREAL_DB,
 });
