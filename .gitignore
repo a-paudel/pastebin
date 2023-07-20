@@ -4,3 +4,6 @@ pastebin
 .env
 node_modules/
 .svelte-kit
+.vercel
+.netlify
+build/
