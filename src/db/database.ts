@@ -1,11 +1,11 @@
 import {
-  SURREAL_DB,
-  SURREAL_NS,
-  SURREAL_PASS,
-  SURREAL_SCOPE,
-  SURREAL_URL,
-  SURREAL_USER,
-} from "$env/static/private";
+  PUBLIC_SURREAL_DB,
+  PUBLIC_SURREAL_NS,
+  PUBLIC_SURREAL_PASS,
+  PUBLIC_SURREAL_SCOPE,
+  PUBLIC_SURREAL_URL,
+  PUBLIC_SURREAL_USER,
+} from "$env/static/public";
 import { Surreal } from "surrealdb.js";
 
 export type Paste = {
@@ -21,14 +21,14 @@ export type PasteCreate = {
   content: string;
 };
 
-export const db = new Surreal(SURREAL_URL, {
+export const db = new Surreal(PUBLIC_SURREAL_URL, {
   auth: {
-    user: SURREAL_USER,
-    pass: SURREAL_PASS,
-    NS: SURREAL_NS,
-    DB: SURREAL_DB,
-    SC: SURREAL_SCOPE,
+    user: PUBLIC_SURREAL_USER,
+    pass: PUBLIC_SURREAL_PASS,
+    NS: PUBLIC_SURREAL_NS,
+    DB: PUBLIC_SURREAL_DB,
+    SC: PUBLIC_SURREAL_SCOPE,
   },
-  ns: SURREAL_NS,
-  db: SURREAL_DB,
+  ns: PUBLIC_SURREAL_NS,
+  db: PUBLIC_SURREAL_DB,
 });
