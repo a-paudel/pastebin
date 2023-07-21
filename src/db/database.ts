@@ -20,16 +20,8 @@ export type Paste = {
 export type PasteCreate = {
   content: string;
 };
-console.log("ENVIRONMENT VARSSS");
-console.log(PUBLIC_SURREAL_URL);
-console.log(PUBLIC_SURREAL_NS);
-console.log(PUBLIC_SURREAL_DB);
-console.log(PUBLIC_SURREAL_SCOPE);
-console.log(PUBLIC_SURREAL_USER);
-console.log(PUBLIC_SURREAL_PASS);
 
-console.log("ENVIRONMENT VARSSS");
-export const db = new Surreal(PUBLIC_SURREAL_URL, {
+export let db = new Surreal(PUBLIC_SURREAL_URL, {
   auth: {
     user: PUBLIC_SURREAL_USER,
     pass: PUBLIC_SURREAL_PASS,
