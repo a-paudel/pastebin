@@ -20,12 +20,6 @@ export type Paste = {
 export type PasteCreate = {
   content: string;
 };
-console.log(PUBLIC_SURREAL_URL);
-console.log(PUBLIC_SURREAL_NS);
-console.log(PUBLIC_SURREAL_DB);
-console.log(PUBLIC_SURREAL_SCOPE);
-console.log(PUBLIC_SURREAL_USER);
-console.log(PUBLIC_SURREAL_PASS);
 
 export let db = new Surreal(PUBLIC_SURREAL_URL, {
   auth: {
